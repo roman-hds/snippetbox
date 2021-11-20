@@ -1,8 +1,5 @@
 APP?==snippetbox
 
-hello:
-	echo "Hello"
-
 clean:
 	rm -f ${APP}
 
