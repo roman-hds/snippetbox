@@ -1,0 +1,1 @@
+Web App 'Snippetbox', which lets people paste and share snippets of text like Pastebin {https://pastebin.com/} or Github's Gists {https://gist.github.com/}lets
