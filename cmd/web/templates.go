@@ -4,12 +4,14 @@ import (
 	"html/template"
 	"path/filepath"
 	"roman-hds/snippetbox/pkg/models"
+	"time"
 )
 
 // templateData acts as a holding struct for any dynamic data that we want to pass to HTML templates
 type templateData struct {
-	Snippet  *models.Snippet
-	Snippets []*models.Snippet
+	CurrentYear int
+	Snippet     *models.Snippet
+	Snippets    []*models.Snippet
 }
 
 func newTemplateCache(dir string) (map[string]*template.Template, error) {
