@@ -11,9 +11,9 @@ var ErrNoRecord = errors.New("models: no matching record found")
 
 // The fields pf the Snippet struct correspond to the fields in our MySQL snippets table
 type Snippet struct {
-	ID int
-	Title string
-	Content string 
-	Created time.Time 
+	ID      int
+	Title   string
+	Content string
+	Created time.Time
 	Expires time.Time
 }
