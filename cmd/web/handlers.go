@@ -20,7 +20,6 @@ func (app *application) home(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	Use the render helper
 	app.render(w, r, "home.page.tmpl", &templateData{
 		Snippets: s,
 	})
