@@ -3,6 +3,7 @@ package main
 import (
 	"html/template"
 	"path/filepath"
+	"roman-hds/snippetbox/pkg/forms"
 	"roman-hds/snippetbox/pkg/models"
 	"time"
 )
@@ -19,6 +20,7 @@ var functions = template.FuncMap{
 // templateData acts as a holding struct for any dynamic data that we want to pass to HTML templates
 type templateData struct {
 	CurrentYear int
+	Form        *forms.Form
 	Snippet     *models.Snippet
 	Snippets    []*models.Snippet
 }
