@@ -57,24 +57,18 @@ func (app *application) createSnippetForm(w http.ResponseWriter, r *http.Request
 }
 
 func (app *application) createSnippet(w http.ResponseWriter, r *http.Request) {
-	// First we call r.ParseForm() which adds data in POST request bodies to the r.PostForm map.
-	// This also works in the same way for PUT and PATCH requests. If there are any errors, we use our app.ClientError helper to send
-	// a 400 Bad Request response to the user
 	err := r.ParseForm()
 	if err != nil {
 		app.clientError(w, http.StatusBadRequest)
 		return
 	}
 
-	// Create a new forms.Form struct containing the POSTed data from the
-	// form, then use the validation methods to check the content
 	form := forms.New(r.PostForm)
 	form.Required("title", "content", "expires")
 	form.MaxLength("title", 100)
 	form.PermittedValues("expires", "365", "7", "1")
 
-	// If the form isn't valid, redisplay the template passing in the
-	// form.Form object as the data
+	// If the form isn't valid, redisplay the template passing in the form.Form object as the data
 	if !form.Valid() {
 		app.render(w, r, "create.page.tmpl", &templateData{Form: form})
 		return
@@ -88,6 +82,8 @@ func (app *application) createSnippet(w http.ResponseWriter, r *http.Request) {
 		app.serverError(w, err)
 		return
 	}
+
+	app.session.Put(r, "flash", "Snippet succesfully created!")
 
 	http.Redirect(w, r, fmt.Sprintf("/snippet/%d", id), http.StatusSeeOther)
 }

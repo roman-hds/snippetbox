@@ -20,6 +20,7 @@ var functions = template.FuncMap{
 // templateData acts as a holding struct for any dynamic data that we want to pass to HTML templates
 type templateData struct {
 	CurrentYear int
+	Flash       string
 	Form        *forms.Form
 	Snippet     *models.Snippet
 	Snippets    []*models.Snippet
